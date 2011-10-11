@@ -28,7 +28,7 @@ class TestBalancer
 
   # splits all tests into n groups based on their type (cucumber,spec,etc)
   # TODO: add magic balancing based on execution time here
-  def for n
+  def balance_for n
     return [all.clone] if n == 1
     # debugger;1
     classes = all.map(&:class).uniq
@@ -39,8 +39,6 @@ class TestBalancer
     groups = {}
     classes.each{ |klass, tests| groups[klass] = groups_per_class }
 
-    p groups
-
     if remainder > 0 # add remainder to the largest class of tests
       # for now assume features are slower
       groups[TestBalancer::Features::Test] += remainder
@@ -50,8 +48,6 @@ class TestBalancer
     end
 
     groups.values.inject(&:+) == n or raise "BUG!"
-
-    p groups
 
     tests_by_class.each{|klass, tests|
       groups[klass] = tests.in_groups(groups[klass], false)
