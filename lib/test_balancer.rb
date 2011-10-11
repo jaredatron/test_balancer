@@ -38,7 +38,7 @@ class TestBalancer
 
     groups = {}
     classes.each{ |klass, tests| groups[klass] = groups_per_class }
-    
+
     p groups
 
     if remainder > 0 # add remainder to the largest class of tests
