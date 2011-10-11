@@ -29,7 +29,9 @@ module TestBalancer::Features
       ENV.delete("BUNDLE_BIN_PATH")
       ENV.delete("BUNDLE_GEMFILE")
       ENV["RUBYOPT"] = ENV["RUBYOPT"].gsub('-rbundler/setup', ' ')
-      `#{cmd}`
+      r = `#{cmd}`
+      puts r
+      r
     }
   end
 
