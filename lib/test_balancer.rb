@@ -1,5 +1,5 @@
 require "pathname"
-require 'active_support/core_ext/array/grouping'
+require 'active_support/core_ext/array'
 require "test_balancer/version"
 
 class TestBalancer
