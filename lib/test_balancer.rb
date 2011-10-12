@@ -1,5 +1,4 @@
 require "pathname"
-require 'active_support/core_ext/array'
 require "test_balancer/version"
 
 class TestBalancer
@@ -7,6 +6,7 @@ class TestBalancer
   autoload :Test,     'test_balancer/test'
   autoload :Specs,    'test_balancer/specs'
   autoload :Features, 'test_balancer/features'
+  autoload :Tests,    'test_balancer/tests'
 
   attr_reader :root
 
@@ -50,7 +50,7 @@ class TestBalancer
     groups.values.inject(&:+) == n or raise "BUG!"
 
     tests_by_class.each{|klass, tests|
-      groups[klass] = tests.in_groups(groups[klass], false)
+      groups[klass] = TestBalancer::Tests.new(tests).in_groups(groups[klass], false)
     }
 
     groups.values.flatten(1)
