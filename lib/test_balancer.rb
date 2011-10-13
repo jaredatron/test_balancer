@@ -38,19 +38,12 @@ class TestBalancer
 
   def generate_commands! n=1
     # TODO: take execution_time into account
-
-    test_groups = tests.in_groups(n, false)
-
-    test_commands = test_groups.map{ |tests|
+    tests.in_groups(n, false).map{ |tests|
       tests.group_by(&:class).map{|test_class, tests_subset|
         "#{test_class::COMMAND} #{tests_subset.join(' ')}"
       }.join('; ')
     }
-
-    test_commands
   end
-
-
 
 
   # def all
