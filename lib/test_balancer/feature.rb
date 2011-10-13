@@ -12,8 +12,9 @@ class TestBalancer::Feature < TestBalancer::Test
     --format pretty --out log/cucumber.log
     --format json --out log/cucumber.json
     --require 'test_balancer/features/formatter'
-    --format TestBalancer::Features::Formatter --out log/cucumber.times
+
   }.join(' ')
+      # --format TestBalancer::Features::Formatter --out log/cucumber.times
 
   def self.all root
     root     = Pathname.new(File.expand_path(root))
