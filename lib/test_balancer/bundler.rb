@@ -4,7 +4,7 @@ module TestBalancer::Bundler
     Bundler.with_clean_env{
       ENV.delete("BUNDLE_BIN_PATH")
       ENV.delete("BUNDLE_GEMFILE")
-      ENV["RUBYOPT"] = ENV["RUBYOPT"].gsub('-rbundler/setup', ' ')
+      ENV["RUBYOPT"] = ENV["RUBYOPT"].gsub('-rbundler/setup', ' ') if ENV["RUBYOPT"]
       yield
     }
   end
