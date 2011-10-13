@@ -3,6 +3,7 @@ require "test_balancer/version"
 
 class TestBalancer
 
+  autoload :Bundler,  'test_balancer/bundler'
   autoload :Test,     'test_balancer/test'
   autoload :Specs,    'test_balancer/specs'
   autoload :Features, 'test_balancer/features'
