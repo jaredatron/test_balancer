@@ -44,6 +44,6 @@ class TestBalancer
         "#{test_class::COMMAND} #{tests_subset.first(2).join(' ')}" #TEMP for faster development
       }.join('; ')
     }
-  end``
+  end
 
 end
