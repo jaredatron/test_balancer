@@ -25,12 +25,14 @@ class TestBalancer::Feature < TestBalancer::Test
 
     json = root.join('tmp/cucumber.json').read
 
-    JSON.parse(json)['features'].each{|feature|
-      feature['elements'].each{|element|
-        path, line = element['file_colon_line'].split(':')
-        features << new(path, line)
-      }
+
+
+    JSON.parse(json).each{|feature|
+      path = feature['uri']
+      feature['elements'].each{|element| features << new(path, element['line'].to_i) }
     }
+
+    debugger;1
 
     features
   end
