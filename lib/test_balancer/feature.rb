@@ -32,8 +32,6 @@ class TestBalancer::Feature < TestBalancer::Test
       feature['elements'].each{|element| features << new(path, element['line'].to_i) }
     }
 
-    debugger;1
-
     features
   end
 
